@@ -7,6 +7,7 @@ import createDriver from "./Controllers/createUser.js";
 import availDriver from "./Controllers/availDriver.js";
 import createpolice from "./Controllers/policeStation.js";
 import calculateIntensity from "./Controllers/calculateIntensity.js";
+import Accident from "./Model/Accident.js";
 const app = express();
 const PORT = 5000;
 
@@ -16,6 +17,10 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 app.use(cors());
 app.get("/", get);
+app.delete("/", async (req, res) => {
+  await Accident.deleteMany({});
+  res.send("deleted");
+});
 app.get("/getdriver/:location", availDriver);
 app.post("/", Post);
 app.post("/createuser", createDriver);

@@ -6,12 +6,12 @@ import cvzone
 from post import postToNode
 from captureImg import captureImg
 import random 
-places=["mspalya","basavangudi","gangamacircle"]
+places=["mspalya","basavangudi","gangamacircle","belcircle","jalahallicross"]
 # Initialize video capture
 
 
-videoName=3
-
+videoName=5
+# random.randint(2, 5)
 accidentMark=0
 ACCIDEN_TRESHOLD=3
 postedTOServer=False;
@@ -76,7 +76,7 @@ while True:
                             #  making a post request to the server
                             postToNode({
                                 "name": "this is from model",
-                                "location": random.choice(places).title(),
+                                "location": random.choice(places).lower(),
                             "intensity": "finally this is working...!!",
                             "isAmbulanceReq": True,
                             "img":imgStr
